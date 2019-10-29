@@ -25,9 +25,6 @@ struct PlayVideoView: View {
     var body: some View {
         VStack (alignment: .leading) {
             playingVideoView
-                .onAppear {
-                    self.playingVideoView.playVideo()
-            }
             .onDisappear {
                 self.playingVideoView.pauseVideo()
             }
@@ -36,12 +33,15 @@ struct PlayVideoView: View {
                 TextField("start", text: $startTrimmingAt, onEditingChanged: {
                     if $0 { self.keyboardGuardian.showField = 0 }
                 }, onCommit: {
-
+                    if let seconds = Double(self.startTrimmingAt) {
+                        self.playingVideoView.set(startTime: seconds)
+                    }
                 })
                 TextField("end", text: $endTrimmingAt, onEditingChanged: {
-                    if $0 { self.keyboardGuardian.showField = 1 }
+                    if $0 { self.keyboardGuardian.showField = 0 }
                 }, onCommit: {
-
+                    print("***> \(self.endTrimmingAt)")
+                    self.playingVideoView.set(endTime: 120)
                 })
             }
             .padding(.leading, 8)
