@@ -34,9 +34,9 @@ final class VideoListViewModel: ObservableObject {
 
 
         let response = searchTrigger
-            .flatMapLatest { [weak self] query -> AnyPublisher<[Video], Never> in
-                self?.searchVideosService.search(matching: query)
-                    .eraseToAnyPublisher() ?? AnyPublisher<[Video], Never>.just([])
+            .flatMapLatest { [unowned self] query -> AnyPublisher<[Video], Never> in
+                self.searchVideosService.search(matching: query)
+                    .eraseToAnyPublisher()
             }
             .receive(on: mainScheduler)
             .share()

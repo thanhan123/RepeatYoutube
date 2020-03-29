@@ -10,23 +10,26 @@ import SwiftUI
 
 struct PlayVideoView: View {
     let video: Video
-    private let playingVideoView: PlayingVideoView
-
-    init(video: Video) {
-        self.video = video
-        self.playingVideoView = PlayingVideoView(videoID: video.id)
-    }
 
     @State private var startTrimmingAt: String = ""
     @State private var endTrimmingAt: String = ""
+
+    @State private var startTime: TimeInterval? = nil
+    @State private var endTime: TimeInterval? = nil
+    @State private var isPlayingVideo: Bool = true
 
     @ObservedObject private var keyboardGuardian = KeyboardGuardian(textFieldCount: 3)
 
     var body: some View {
         VStack (alignment: .leading) {
-            playingVideoView
+            PlayingVideoView(
+                videoID: video.id,
+                startTime: self.$startTime,
+                endTime: self.$endTime,
+                isPlaying: self.$isPlayingVideo
+            )
             .onDisappear {
-                self.playingVideoView.pauseVideo()
+                self.isPlayingVideo = false
             }
             Text("\(video.title)")
             HStack {
@@ -34,14 +37,13 @@ struct PlayVideoView: View {
                     if $0 { self.keyboardGuardian.showField = 0 }
                 }, onCommit: {
                     if let seconds = Double(self.startTrimmingAt) {
-                        self.playingVideoView.set(startTime: seconds)
+                        self.startTime = seconds
                     }
                 })
                 TextField("end", text: $endTrimmingAt, onEditingChanged: {
                     if $0 { self.keyboardGuardian.showField = 0 }
                 }, onCommit: {
-                    print("***> \(self.endTrimmingAt)")
-                    self.playingVideoView.set(endTime: 120)
+                    self.endTime = 120
                 })
             }
             .padding(.leading, 8)

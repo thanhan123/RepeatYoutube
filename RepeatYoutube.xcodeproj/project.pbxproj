@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2AFC495EE5C784A6E650F303 /* Pods_RepeatYoutube.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1390D2A82136137C0E4BE55 /* Pods_RepeatYoutube.framework */; };
+		D10849392386A7B500B30847 /* UIControlPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10849382386A7B500B30847 /* UIControlPublisher.swift */; };
 		D10B8E89828EF3109C6D6BB1 /* Pods_RepeatYoutubeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266E8CA9F8300D76B179D7C9 /* Pods_RepeatYoutubeTests.framework */; };
 		D11147CF234CD82800B9E537 /* VideoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11147CE234CD82800B9E537 /* VideoListViewModel.swift */; };
 		D11147D1234CDABE00B9E537 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11147D0234CDABE00B9E537 /* Publisher+Extension.swift */; };
+		D13012CE242F011F00B20249 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13012CD242F011F00B20249 /* ActivityIndicator.swift */; };
+		D13012D0242F01D900B20249 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13012CF242F01D900B20249 /* LoadingView.swift */; };
 		D1AE12102348B7BF0000EA28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE120F2348B7BF0000EA28 /* AppDelegate.swift */; };
 		D1AE12122348B7BF0000EA28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE12112348B7BF0000EA28 /* SceneDelegate.swift */; };
 		D1AE12142348B7BF0000EA28 /* SearchVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE12132348B7BF0000EA28 /* SearchVideosView.swift */; };
@@ -45,8 +48,11 @@
 		40430EF501B739D482EE6D20 /* Pods-RepeatYoutube.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RepeatYoutube.debug.xcconfig"; path = "Target Support Files/Pods-RepeatYoutube/Pods-RepeatYoutube.debug.xcconfig"; sourceTree = "<group>"; };
 		59963D502B80C712A5993EC9 /* Pods-RepeatYoutube.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RepeatYoutube.release.xcconfig"; path = "Target Support Files/Pods-RepeatYoutube/Pods-RepeatYoutube.release.xcconfig"; sourceTree = "<group>"; };
 		942C9AC25FFE85E1F7CA0D38 /* Pods-RepeatYoutubeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RepeatYoutubeTests.release.xcconfig"; path = "Target Support Files/Pods-RepeatYoutubeTests/Pods-RepeatYoutubeTests.release.xcconfig"; sourceTree = "<group>"; };
+		D10849382386A7B500B30847 /* UIControlPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlPublisher.swift; sourceTree = "<group>"; };
 		D11147CE234CD82800B9E537 /* VideoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListViewModel.swift; sourceTree = "<group>"; };
 		D11147D0234CDABE00B9E537 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
+		D13012CD242F011F00B20249 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		D13012CF242F01D900B20249 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D1AE120C2348B7BF0000EA28 /* RepeatYoutube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepeatYoutube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AE120F2348B7BF0000EA28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1AE12112348B7BF0000EA28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +197,9 @@
 			children = (
 				D1EB276123668E2A0044E6B0 /* GeometryGetter.swift */,
 				D1EB276323668E510044E6B0 /* KeyboardGuardian.swift */,
+				D10849382386A7B500B30847 /* UIControlPublisher.swift */,
+				D13012CD242F011F00B20249 /* ActivityIndicator.swift */,
+				D13012CF242F01D900B20249 /* LoadingView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -370,15 +379,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1EB27662366C1700044E6B0 /* PlayingVideoView.swift in Sources */,
+				D13012CE242F011F00B20249 /* ActivityIndicator.swift in Sources */,
 				D1AE12382348DEC60000EA28 /* VideoListView.swift in Sources */,
 				D1EB276423668E510044E6B0 /* KeyboardGuardian.swift in Sources */,
 				D1AE123D2348E29B0000EA28 /* PlayVideoView.swift in Sources */,
+				D13012D0242F01D900B20249 /* LoadingView.swift in Sources */,
 				D11147CF234CD82800B9E537 /* VideoListViewModel.swift in Sources */,
 				D1AE123A2348DEEB0000EA28 /* Video.swift in Sources */,
 				D11147D1234CDABE00B9E537 /* Publisher+Extension.swift in Sources */,
 				D1AE12362348DEA30000EA28 /* SearchView.swift in Sources */,
 				D1AE12102348B7BF0000EA28 /* AppDelegate.swift in Sources */,
 				D1EB276223668E2A0044E6B0 /* GeometryGetter.swift in Sources */,
+				D10849392386A7B500B30847 /* UIControlPublisher.swift in Sources */,
 				D1AE123F2349BE4C0000EA28 /* SearchVideosService.swift in Sources */,
 				D1AE12122348B7BF0000EA28 /* SceneDelegate.swift in Sources */,
 				D1AE12142348B7BF0000EA28 /* SearchVideosView.swift in Sources */,

@@ -7,17 +7,23 @@
 //
 
 import SwiftUI
+import Combine
 import URLImage
 
 struct VideoList: View {
     @ObservedObject var viewModel: VideoListViewModel
+    @State private var isShowingAlert = false
 
     var body: some View {
-        List {
-            ForEach (viewModel.videos) { video in
-                NavigationLink(destination: PlayVideoView(video: video)) {
-                    VideoRow(video: video)
+        LoadingView(isShowing: self.$isShowingAlert) {
+            List {
+                ForEach (self.viewModel.videos) { video in
+                    NavigationLink(destination: PlayVideoView(video: video)) {
+                        VideoRow(video: video)
+                    }
                 }
+            }.onReceive(self.viewModel.$isLoading) { (isLoading) in
+                self.isShowingAlert = isLoading
             }
         }
     }

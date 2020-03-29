@@ -49,7 +49,7 @@ extension SearchVideosService {
             .decode(type: Video.YoutubeVideosContainer.self, decoder: decoder)
             .map{ $0.videos }
             .catch{ error -> AnyPublisher<[Video], Never> in
-                AnyPublisher<[Video], Never>.empty()
+                return AnyPublisher<[Video], Never>.empty()
             }
         .eraseToAnyPublisher()
     }

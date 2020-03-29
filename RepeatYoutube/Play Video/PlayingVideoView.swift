@@ -12,22 +12,43 @@ import SwiftUI
 
 struct PlayingVideoView: UIViewControllerRepresentable {
     let videoID: String
+    @Binding var startTime: TimeInterval?
+    @Binding var endTime: TimeInterval?
+    @Binding var isPlaying: Bool
 
-    init(videoID: String) {
-        self.videoID = videoID
-    }
-
-    private let avPlayerVC = AVPlayerViewController()
     private let youtubeClient = XCDYouTubeClient.default()
     private let viewModel = PlayingVideoViewModel()
 
     func updateUIViewController(_ uiViewController: AVPlayerViewController, context: UIViewControllerRepresentableContext<PlayingVideoView>) {
+        if self.isPlaying {
+            uiViewController.player?.play()
+        } else {
+            uiViewController.player?.pause()
+            uiViewController.player = nil
+        }
 
+        if let startTime = startTime {
+            viewModel.startTime = CMTimeMakeWithSeconds(startTime, preferredTimescale: 1)
+        }
+
+        if let endTime = endTime {
+            let time = CMTimeMakeWithSeconds(endTime, preferredTimescale: 1)
+            viewModel.endTime = time
+            viewModel.removeObservers()
+            viewModel.boundaryTimeObservers.append(
+                uiViewController.player?.addBoundaryTimeObserver(
+                    forTimes: [NSValue(time: time)],
+                    queue: DispatchQueue.main
+                ) {
+                    uiViewController.player?.seek(to: self.viewModel.startTime)
+            })
+        }
     }
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<PlayingVideoView>) -> AVPlayerViewController {
+        let avPlayerVC = AVPlayerViewController()
         viewModel.observersRemovingHandler = { (observers) in
-            if let player = self.avPlayerVC.player {
+            if let player = avPlayerVC.player {
                 observers.forEach(player.removeTimeObserver)
             }
         }
@@ -42,42 +63,9 @@ struct PlayingVideoView: UIViewControllerRepresentable {
                 }
 
                 avPlayerVC?.player = AVPlayer(url: videoURL)
-                self.playVideo()
-                if let endTime = self.viewModel.endTime {
-                    self.setEndTimeObserver(time: endTime)
-                }
             }
         }
         return avPlayerVC
-    }
-
-    func pauseVideo() {
-        avPlayerVC.player?.pause()
-    }
-
-    func playVideo() {
-        avPlayerVC.player?.play()
-    }
-
-    func set(startTime: TimeInterval) {
-        self.viewModel.startTime = CMTimeMakeWithSeconds(startTime, preferredTimescale: 1)
-    }
-
-    func set(endTime: TimeInterval) {
-        let time = CMTimeMakeWithSeconds(endTime, preferredTimescale: 1)
-        self.viewModel.endTime = time
-        self.viewModel.removeObservers()
-        setEndTimeObserver(time: time)
-    }
-
-    private func setEndTimeObserver(time: CMTime) {
-        viewModel.boundaryTimeObservers.append(
-            avPlayerVC.player?.addBoundaryTimeObserver(
-                forTimes: [NSValue(time: time)],
-                queue: DispatchQueue.main
-            ) {
-                self.avPlayerVC.player?.seek(to: self.viewModel.startTime)
-        })
     }
 }
 
