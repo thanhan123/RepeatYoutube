@@ -14,6 +14,7 @@
 		D11147D1234CDABE00B9E537 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11147D0234CDABE00B9E537 /* Publisher+Extension.swift */; };
 		D13012CE242F011F00B20249 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13012CD242F011F00B20249 /* ActivityIndicator.swift */; };
 		D13012D0242F01D900B20249 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13012CF242F01D900B20249 /* LoadingView.swift */; };
+		D133FEED244AEE4F00AF800C /* NetworkClient in Frameworks */ = {isa = PBXBuildFile; productRef = D133FEEC244AEE4F00AF800C /* NetworkClient */; };
 		D1AE12102348B7BF0000EA28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE120F2348B7BF0000EA28 /* AppDelegate.swift */; };
 		D1AE12122348B7BF0000EA28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE12112348B7BF0000EA28 /* SceneDelegate.swift */; };
 		D1AE12142348B7BF0000EA28 /* SearchVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE12132348B7BF0000EA28 /* SearchVideosView.swift */; };
@@ -82,6 +83,7 @@
 			files = (
 				D1AE12332348CCAF0000EA28 /* URLImage in Frameworks */,
 				2AFC495EE5C784A6E650F303 /* Pods_RepeatYoutube.framework in Frameworks */,
+				D133FEED244AEE4F00AF800C /* NetworkClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +226,7 @@
 			name = RepeatYoutube;
 			packageProductDependencies = (
 				D1AE12322348CCAF0000EA28 /* URLImage */,
+				D133FEEC244AEE4F00AF800C /* NetworkClient */,
 			);
 			productName = RepeatYoutube;
 			productReference = D1AE120C2348B7BF0000EA28 /* RepeatYoutube.app */;
@@ -278,6 +281,7 @@
 			mainGroup = D1AE12032348B7BF0000EA28;
 			packageReferences = (
 				D1AE12312348CCAF0000EA28 /* XCRemoteSwiftPackageReference "url-image" */,
+				D133FEEB244AEE4F00AF800C /* XCRemoteSwiftPackageReference "NetworkClient" */,
 			);
 			productRefGroup = D1AE120D2348B7BF0000EA28 /* Products */;
 			projectDirPath = "";
@@ -660,6 +664,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D133FEEB244AEE4F00AF800C /* XCRemoteSwiftPackageReference "NetworkClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thanhan123/NetworkClient.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 		D1AE12312348CCAF0000EA28 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
@@ -671,6 +683,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D133FEEC244AEE4F00AF800C /* NetworkClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D133FEEB244AEE4F00AF800C /* XCRemoteSwiftPackageReference "NetworkClient" */;
+			productName = NetworkClient;
+		};
 		D1AE12322348CCAF0000EA28 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D1AE12312348CCAF0000EA28 /* XCRemoteSwiftPackageReference "url-image" */;

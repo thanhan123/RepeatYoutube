@@ -8,13 +8,13 @@
 
 import Foundation
 import Combine
+import NetworkClient
 
 struct SearchVideosService {
-    private let session: URLSession
+    private let networkClient = CombineNetworkingClient()
     private let decoder: JSONDecoder
 
-    init(session: URLSession = .shared, decoder: JSONDecoder = .init()) {
-        self.session = session
+    init(decoder: JSONDecoder = .init()) {
         self.decoder = decoder
     }
 }
@@ -29,23 +29,17 @@ extension SearchVideosService {
     }
 
     func search(matching query: String) -> AnyPublisher<[Video], Never> {
-        guard var components = URLComponents(string: "\(baseURL)/search") else {
+        guard let url = URL(string: "\(baseURL)/search") else {
             return .empty()
         }
-        components.queryItems = [URLQueryItem(name: "q", value: query),
-                                 URLQueryItem(name: "key", value: apiKey),
-                                 URLQueryItem(name: "part", value: "snippet")]
 
-        guard
-            let url = components.url
-            else { preconditionFailure("Can't create url for query: \(query)") }
-
-        let request = URLRequest(url: url)
-        return session
-            .dataTaskPublisher(for: request)
-            .map({ data, _ in
-                return data
-            })
+        return networkClient.performRequest(
+            url: url,
+            parameters: ["q": query,
+                         "key": apiKey,
+                         "part": "snippet"],
+            requestType: .get
+        )
             .decode(type: Video.YoutubeVideosContainer.self, decoder: decoder)
             .map{ $0.videos }
             .catch{ error -> AnyPublisher<[Video], Never> in
