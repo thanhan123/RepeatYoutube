@@ -35,14 +35,27 @@ struct VideoRow: View {
     var body: some View {
         VStack (alignment: .leading) {
             URLImage(video.imageURL) { proxy in
-            proxy.image
-                .resizable()                     // Make image resizable
-                .aspectRatio(contentMode: .fit)  // Fit the frame
-                .clipped()                       // Clip overlaping parts
+                proxy.image
+                    .resizable()                     // Make image resizable
+                    .aspectRatio(contentMode: .fit)  // Fit the frame
+                    .clipped()                       // Clip overlaping parts
             }
             .frame(width: nil, height: 300)
-            Text(video.title).font(.headline)
-            Text(video.description).font(.subheadline)
+            HStack {
+                VStack (alignment: .leading) {
+                    Text(video.title).font(.headline)
+                    Text(video.description).font(.subheadline)
+                }
+                Button(action: {
+                    print("here")
+                }) {
+                    Text("save")
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color.blue)
+                        .cornerRadius(5)
+                }.buttonStyle(BorderlessButtonStyle())
+            }
         }
         .padding(.top, 8)
     }

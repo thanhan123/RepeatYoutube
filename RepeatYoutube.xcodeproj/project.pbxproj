@@ -15,6 +15,7 @@
 		D13012CE242F011F00B20249 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13012CD242F011F00B20249 /* ActivityIndicator.swift */; };
 		D13012D0242F01D900B20249 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13012CF242F01D900B20249 /* LoadingView.swift */; };
 		D133FEED244AEE4F00AF800C /* NetworkClient in Frameworks */ = {isa = PBXBuildFile; productRef = D133FEEC244AEE4F00AF800C /* NetworkClient */; };
+		D133FEF0244C41F500AF800C /* MyVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133FEEF244C41F500AF800C /* MyVideosView.swift */; };
 		D1AE12102348B7BF0000EA28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE120F2348B7BF0000EA28 /* AppDelegate.swift */; };
 		D1AE12122348B7BF0000EA28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE12112348B7BF0000EA28 /* SceneDelegate.swift */; };
 		D1AE12142348B7BF0000EA28 /* SearchVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE12132348B7BF0000EA28 /* SearchVideosView.swift */; };
@@ -54,6 +55,7 @@
 		D11147D0234CDABE00B9E537 /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
 		D13012CD242F011F00B20249 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D13012CF242F01D900B20249 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D133FEEF244C41F500AF800C /* MyVideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVideosView.swift; sourceTree = "<group>"; };
 		D1AE120C2348B7BF0000EA28 /* RepeatYoutube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepeatYoutube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AE120F2348B7BF0000EA28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1AE12112348B7BF0000EA28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D133FEEE244C41DC00AF800C /* My Videos */ = {
+			isa = PBXGroup;
+			children = (
+				D133FEEF244C41F500AF800C /* MyVideosView.swift */,
+			);
+			path = "My Videos";
+			sourceTree = "<group>";
+		};
 		D1AE12032348B7BF0000EA28 = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		D1AE120E2348B7BF0000EA28 /* RepeatYoutube */ = {
 			isa = PBXGroup;
 			children = (
+				D133FEEE244C41DC00AF800C /* My Videos */,
 				D1EB276023668B0E0044E6B0 /* Base */,
 				D1AE123B2348E27E0000EA28 /* Play Video */,
 				D1AE12342348DE800000EA28 /* Search Videos */,
@@ -398,6 +409,7 @@
 				D1AE123F2349BE4C0000EA28 /* SearchVideosService.swift in Sources */,
 				D1AE12122348B7BF0000EA28 /* SceneDelegate.swift in Sources */,
 				D1AE12142348B7BF0000EA28 /* SearchVideosView.swift in Sources */,
+				D133FEF0244C41F500AF800C /* MyVideosView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
