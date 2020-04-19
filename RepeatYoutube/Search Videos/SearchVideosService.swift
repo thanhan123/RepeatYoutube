@@ -9,6 +9,7 @@
 import Foundation
 import Combine
 import NetworkClient
+import Keys
 
 struct SearchVideosService {
     private let networkClient = CombineNetworkingClient()
@@ -21,7 +22,7 @@ struct SearchVideosService {
 
 extension SearchVideosService {
     private var apiKey: String {
-        return "AIzaSyD5hYWAxRb5h3oJUE8FFLlM8JWXgR3eo0w"
+        return RepeatYoutubeKeys().youtubeAPIKey
     }
 
     private var baseURL: String {

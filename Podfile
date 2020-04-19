@@ -13,3 +13,11 @@ target 'RepeatYoutube' do
   end
 
 end
+
+plugin 'cocoapods-keys', {
+  :project => "RepeatYoutube",
+  :target => "RepeatYoutube",
+  :keys => [
+    "YoutubeAPIKey"
+  ]
+}
