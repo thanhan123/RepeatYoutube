@@ -19,7 +19,9 @@ struct VideoList: View {
             List {
                 ForEach (self.viewModel.videos) { video in
                     NavigationLink(destination: PlayVideoView(video: video)) {
-                        VideoRow(video: video)
+                        VideoRow(video: video, saveVideoHandler: { video in
+                            self.viewModel.save(video: video)
+                        })
                     }
                 }
             }.onReceive(self.viewModel.$isLoading) { (isLoading) in
@@ -31,6 +33,7 @@ struct VideoList: View {
 
 struct VideoRow: View {
     let video: Video
+    let saveVideoHandler: (Video) -> Void
 
     var body: some View {
         VStack (alignment: .leading) {
@@ -47,7 +50,7 @@ struct VideoRow: View {
                     Text(video.description).font(.subheadline)
                 }
                 Button(action: {
-                    print("here")
+                    self.saveVideoHandler(self.video)
                 }) {
                     Text("save")
                         .padding()

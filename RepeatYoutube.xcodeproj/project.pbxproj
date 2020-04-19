@@ -16,6 +16,11 @@
 		D13012D0242F01D900B20249 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13012CF242F01D900B20249 /* LoadingView.swift */; };
 		D133FEED244AEE4F00AF800C /* NetworkClient in Frameworks */ = {isa = PBXBuildFile; productRef = D133FEEC244AEE4F00AF800C /* NetworkClient */; };
 		D133FEF0244C41F500AF800C /* MyVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133FEEF244C41F500AF800C /* MyVideosView.swift */; };
+		D133FEF3244C590000AF800C /* VideosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133FEF2244C590000AF800C /* VideosManager.swift */; };
+		D133FEF8244C5A5400AF800C /* RepeatYoutube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D133FEF6244C5A5400AF800C /* RepeatYoutube.xcdatamodeld */; };
+		D133FEFC244C66F300AF800C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133FEFB244C66F300AF800C /* CoreDataManager.swift */; };
+		D133FEFE244C69EF00AF800C /* VideoEntity+Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133FEFD244C69EF00AF800C /* VideoEntity+Video.swift */; };
+		D133FF00244C701600AF800C /* MyVideosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133FEFF244C701600AF800C /* MyVideosViewModel.swift */; };
 		D1AE12102348B7BF0000EA28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE120F2348B7BF0000EA28 /* AppDelegate.swift */; };
 		D1AE12122348B7BF0000EA28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE12112348B7BF0000EA28 /* SceneDelegate.swift */; };
 		D1AE12142348B7BF0000EA28 /* SearchVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE12132348B7BF0000EA28 /* SearchVideosView.swift */; };
@@ -56,6 +61,11 @@
 		D13012CD242F011F00B20249 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		D13012CF242F01D900B20249 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D133FEEF244C41F500AF800C /* MyVideosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVideosView.swift; sourceTree = "<group>"; };
+		D133FEF2244C590000AF800C /* VideosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosManager.swift; sourceTree = "<group>"; };
+		D133FEF7244C5A5400AF800C /* VideoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VideoModel.xcdatamodel; sourceTree = "<group>"; };
+		D133FEFB244C66F300AF800C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D133FEFD244C69EF00AF800C /* VideoEntity+Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoEntity+Video.swift"; sourceTree = "<group>"; };
+		D133FEFF244C701600AF800C /* MyVideosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVideosViewModel.swift; sourceTree = "<group>"; };
 		D1AE120C2348B7BF0000EA28 /* RepeatYoutube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepeatYoutube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1AE120F2348B7BF0000EA28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1AE12112348B7BF0000EA28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,8 +134,35 @@
 			isa = PBXGroup;
 			children = (
 				D133FEEF244C41F500AF800C /* MyVideosView.swift */,
+				D133FEFF244C701600AF800C /* MyVideosViewModel.swift */,
 			);
 			path = "My Videos";
+			sourceTree = "<group>";
+		};
+		D133FEF1244C583A00AF800C /* Videos Manager */ = {
+			isa = PBXGroup;
+			children = (
+				D133FEF2244C590000AF800C /* VideosManager.swift */,
+			);
+			path = "Videos Manager";
+			sourceTree = "<group>";
+		};
+		D133FEF4244C598200AF800C /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				D133FEF5244C5A3400AF800C /* Model */,
+				D133FEFB244C66F300AF800C /* CoreDataManager.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		D133FEF5244C5A3400AF800C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D133FEF6244C5A5400AF800C /* RepeatYoutube.xcdatamodeld */,
+				D133FEFD244C69EF00AF800C /* VideoEntity+Video.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D1AE12032348B7BF0000EA28 = {
@@ -151,6 +188,8 @@
 		D1AE120E2348B7BF0000EA28 /* RepeatYoutube */ = {
 			isa = PBXGroup;
 			children = (
+				D133FEF4244C598200AF800C /* Core Data */,
+				D133FEF1244C583A00AF800C /* Videos Manager */,
 				D133FEEE244C41DC00AF800C /* My Videos */,
 				D1EB276023668B0E0044E6B0 /* Base */,
 				D1AE123B2348E27E0000EA28 /* Play Video */,
@@ -400,15 +439,20 @@
 				D1AE123D2348E29B0000EA28 /* PlayVideoView.swift in Sources */,
 				D13012D0242F01D900B20249 /* LoadingView.swift in Sources */,
 				D11147CF234CD82800B9E537 /* VideoListViewModel.swift in Sources */,
+				D133FEF3244C590000AF800C /* VideosManager.swift in Sources */,
 				D1AE123A2348DEEB0000EA28 /* Video.swift in Sources */,
 				D11147D1234CDABE00B9E537 /* Publisher+Extension.swift in Sources */,
 				D1AE12362348DEA30000EA28 /* SearchView.swift in Sources */,
+				D133FEFE244C69EF00AF800C /* VideoEntity+Video.swift in Sources */,
 				D1AE12102348B7BF0000EA28 /* AppDelegate.swift in Sources */,
 				D1EB276223668E2A0044E6B0 /* GeometryGetter.swift in Sources */,
 				D10849392386A7B500B30847 /* UIControlPublisher.swift in Sources */,
 				D1AE123F2349BE4C0000EA28 /* SearchVideosService.swift in Sources */,
 				D1AE12122348B7BF0000EA28 /* SceneDelegate.swift in Sources */,
+				D133FEF8244C5A5400AF800C /* RepeatYoutube.xcdatamodeld in Sources */,
 				D1AE12142348B7BF0000EA28 /* SearchVideosView.swift in Sources */,
+				D133FEFC244C66F300AF800C /* CoreDataManager.swift in Sources */,
+				D133FF00244C701600AF800C /* MyVideosViewModel.swift in Sources */,
 				D133FEF0244C41F500AF800C /* MyVideosView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,6 +750,19 @@
 			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		D133FEF6244C5A5400AF800C /* RepeatYoutube.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D133FEF7244C5A5400AF800C /* VideoModel.xcdatamodel */,
+			);
+			currentVersion = D133FEF7244C5A5400AF800C /* VideoModel.xcdatamodel */;
+			path = RepeatYoutube.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D1AE12042348B7BF0000EA28 /* Project object */;
 }

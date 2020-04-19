@@ -87,3 +87,12 @@ struct FailableDecodable<Base : Decodable> : Decodable {
         self.base = try? container.decode(Base.self)
     }
 }
+
+extension Video {
+    init(videoEntity: VideoEntity) {
+        self.id = videoEntity.id ?? ""
+        self.title = videoEntity.title ?? ""
+        self.description = videoEntity.videoDescription ?? ""
+        self.imageURL = videoEntity.imageURL ?? URL(string: "imageurl")!
+    }
+}

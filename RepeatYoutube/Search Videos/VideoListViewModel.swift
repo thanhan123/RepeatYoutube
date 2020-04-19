@@ -20,6 +20,7 @@ final class VideoListViewModel: ObservableObject {
     var text: String = ""
 
     private let searchVideosService = SearchVideosService()
+    private let videosManager: VideosManager = VideosManagerImpl()
 
     init<S: Scheduler>(mainScheduler: S) {
 
@@ -54,5 +55,9 @@ final class VideoListViewModel: ObservableObject {
 
     func search() {
         _searchWithQuery.send(text)
+    }
+
+    func save(video: Video) {
+        videosManager.save(video: video)
     }
 }

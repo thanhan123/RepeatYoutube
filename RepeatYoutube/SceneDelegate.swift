@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         let searchVideosView = SearchVideosView()
-        let myVideosView = MyVideosView()
+        let myVideosView = MyVideosView(viewModel: MyVideosViewModel())
         let contentView = TabView {
             searchVideosView.tabItem{
                 Text("Search videos")
