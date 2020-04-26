@@ -19,9 +19,7 @@ struct VideoList: View {
             List {
                 ForEach (self.viewModel.videos) { video in
                     NavigationLink(destination: PlayVideoView(video: video)) {
-                        VideoRow(video: video, saveVideoHandler: { video in
-                            self.viewModel.save(video: video)
-                        })
+                        VideoRow(video: video)
                     }
                 }
             }.onReceive(self.viewModel.$isLoading) { (isLoading) in
@@ -33,7 +31,10 @@ struct VideoList: View {
 
 struct VideoRow: View {
     let video: Video
-    let saveVideoHandler: (Video) -> Void
+    @EnvironmentObject var savedVideosManager: SavedVideosManager
+    private var isVideoSaved: Bool {
+        savedVideosManager.savedVideosId.contains(video.id)
+    }
 
     var body: some View {
         VStack (alignment: .leading) {
@@ -50,9 +51,13 @@ struct VideoRow: View {
                     Text(video.description).font(.subheadline)
                 }
                 Button(action: {
-                    self.saveVideoHandler(self.video)
+                    if self.isVideoSaved {
+                        self.savedVideosManager.remove(video: self.video)
+                    } else {
+                        self.savedVideosManager.remove(video: self.video)
+                    }
                 }) {
-                    Text("save")
+                    Text(self.isVideoSaved ? "remove" : "save")
                         .padding()
                         .foregroundColor(.white)
                         .background(Color.blue)

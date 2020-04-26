@@ -14,7 +14,6 @@
 		D11147D1234CDABE00B9E537 /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11147D0234CDABE00B9E537 /* Publisher+Extension.swift */; };
 		D13012CE242F011F00B20249 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13012CD242F011F00B20249 /* ActivityIndicator.swift */; };
 		D13012D0242F01D900B20249 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13012CF242F01D900B20249 /* LoadingView.swift */; };
-		D133FEED244AEE4F00AF800C /* NetworkClient in Frameworks */ = {isa = PBXBuildFile; productRef = D133FEEC244AEE4F00AF800C /* NetworkClient */; };
 		D133FEF0244C41F500AF800C /* MyVideosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133FEEF244C41F500AF800C /* MyVideosView.swift */; };
 		D133FEF3244C590000AF800C /* VideosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133FEF2244C590000AF800C /* VideosManager.swift */; };
 		D133FEF8244C5A5400AF800C /* RepeatYoutube.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D133FEF6244C5A5400AF800C /* RepeatYoutube.xcdatamodeld */; };
@@ -34,6 +33,8 @@
 		D1AE123A2348DEEB0000EA28 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE12392348DEEB0000EA28 /* Video.swift */; };
 		D1AE123D2348E29B0000EA28 /* PlayVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE123C2348E29B0000EA28 /* PlayVideoView.swift */; };
 		D1AE123F2349BE4C0000EA28 /* SearchVideosService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AE123E2349BE4C0000EA28 /* SearchVideosService.swift */; };
+		D1E5BEE7245546E9006291A6 /* SavedVideosManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E5BEE6245546E9006291A6 /* SavedVideosManager.swift */; };
+		D1E6FFF42451D3FB000ED88B /* NetworkClient in Frameworks */ = {isa = PBXBuildFile; productRef = D1E6FFF32451D3FB000ED88B /* NetworkClient */; };
 		D1EB276223668E2A0044E6B0 /* GeometryGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB276123668E2A0044E6B0 /* GeometryGetter.swift */; };
 		D1EB276423668E510044E6B0 /* KeyboardGuardian.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB276323668E510044E6B0 /* KeyboardGuardian.swift */; };
 		D1EB27662366C1700044E6B0 /* PlayingVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EB27652366C1700044E6B0 /* PlayingVideoView.swift */; };
@@ -82,6 +83,7 @@
 		D1AE12392348DEEB0000EA28 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		D1AE123C2348E29B0000EA28 /* PlayVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoView.swift; sourceTree = "<group>"; };
 		D1AE123E2349BE4C0000EA28 /* SearchVideosService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVideosService.swift; sourceTree = "<group>"; };
+		D1E5BEE6245546E9006291A6 /* SavedVideosManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedVideosManager.swift; sourceTree = "<group>"; };
 		D1EB276123668E2A0044E6B0 /* GeometryGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryGetter.swift; sourceTree = "<group>"; };
 		D1EB276323668E510044E6B0 /* KeyboardGuardian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardGuardian.swift; sourceTree = "<group>"; };
 		D1EB27652366C1700044E6B0 /* PlayingVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingVideoView.swift; sourceTree = "<group>"; };
@@ -95,7 +97,7 @@
 			files = (
 				D1AE12332348CCAF0000EA28 /* URLImage in Frameworks */,
 				2AFC495EE5C784A6E650F303 /* Pods_RepeatYoutube.framework in Frameworks */,
-				D133FEED244AEE4F00AF800C /* NetworkClient in Frameworks */,
+				D1E6FFF42451D3FB000ED88B /* NetworkClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +137,7 @@
 			children = (
 				D133FEEF244C41F500AF800C /* MyVideosView.swift */,
 				D133FEFF244C701600AF800C /* MyVideosViewModel.swift */,
+				D1E5BEE6245546E9006291A6 /* SavedVideosManager.swift */,
 			);
 			path = "My Videos";
 			sourceTree = "<group>";
@@ -276,7 +279,7 @@
 			name = RepeatYoutube;
 			packageProductDependencies = (
 				D1AE12322348CCAF0000EA28 /* URLImage */,
-				D133FEEC244AEE4F00AF800C /* NetworkClient */,
+				D1E6FFF32451D3FB000ED88B /* NetworkClient */,
 			);
 			productName = RepeatYoutube;
 			productReference = D1AE120C2348B7BF0000EA28 /* RepeatYoutube.app */;
@@ -331,7 +334,7 @@
 			mainGroup = D1AE12032348B7BF0000EA28;
 			packageReferences = (
 				D1AE12312348CCAF0000EA28 /* XCRemoteSwiftPackageReference "url-image" */,
-				D133FEEB244AEE4F00AF800C /* XCRemoteSwiftPackageReference "NetworkClient" */,
+				D1E6FFF22451D3FB000ED88B /* XCRemoteSwiftPackageReference "NetworkClient" */,
 			);
 			productRefGroup = D1AE120D2348B7BF0000EA28 /* Products */;
 			projectDirPath = "";
@@ -446,6 +449,7 @@
 				D133FEFE244C69EF00AF800C /* VideoEntity+Video.swift in Sources */,
 				D1AE12102348B7BF0000EA28 /* AppDelegate.swift in Sources */,
 				D1EB276223668E2A0044E6B0 /* GeometryGetter.swift in Sources */,
+				D1E5BEE7245546E9006291A6 /* SavedVideosManager.swift in Sources */,
 				D10849392386A7B500B30847 /* UIControlPublisher.swift in Sources */,
 				D1AE123F2349BE4C0000EA28 /* SearchVideosService.swift in Sources */,
 				D1AE12122348B7BF0000EA28 /* SceneDelegate.swift in Sources */,
@@ -720,14 +724,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D133FEEB244AEE4F00AF800C /* XCRemoteSwiftPackageReference "NetworkClient" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/thanhan123/NetworkClient.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
 		D1AE12312348CCAF0000EA28 /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
@@ -736,18 +732,26 @@
 				minimumVersion = 0.8.0;
 			};
 		};
+		D1E6FFF22451D3FB000ED88B /* XCRemoteSwiftPackageReference "NetworkClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thanhan123/NetworkClient.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D133FEEC244AEE4F00AF800C /* NetworkClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D133FEEB244AEE4F00AF800C /* XCRemoteSwiftPackageReference "NetworkClient" */;
-			productName = NetworkClient;
-		};
 		D1AE12322348CCAF0000EA28 /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D1AE12312348CCAF0000EA28 /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
+		};
+		D1E6FFF32451D3FB000ED88B /* NetworkClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D1E6FFF22451D3FB000ED88B /* XCRemoteSwiftPackageReference "NetworkClient" */;
+			productName = NetworkClient;
 		};
 /* End XCSwiftPackageProductDependency section */
 

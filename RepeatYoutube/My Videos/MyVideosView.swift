@@ -10,22 +10,17 @@ import SwiftUI
 
 struct MyVideosView: View {
     @ObservedObject var viewModel: MyVideosViewModel
-    @State private var isShowingAlert = false
 
     var body: some View {
         NavigationView {
-            LoadingView(isShowing: self.$isShowingAlert) {
-                List {
-                    ForEach (self.viewModel.videos) { video in
-                        NavigationLink(destination: PlayVideoView(video: video)) {
-                            VideoRow(video: video, saveVideoHandler: { video in
-
-                            })
-                        }
+            List {
+                ForEach (self.viewModel.videos) { video in
+                    NavigationLink(destination: PlayVideoView(video: video)) {
+                        VideoRow(video: video)
                     }
-                }.onAppear {
-                    self.viewModel.fetchAllVideos()
                 }
+            }.onAppear {
+                self.viewModel.fetchAllVideos()
             }.navigationBarTitle("My Videos")
         }
     }

@@ -9,9 +9,9 @@
 import Combine
 
 final class VideoListViewModel: ObservableObject {
-    typealias SearchVideos = (String) -> AnyPublisher<[Video], Never>
+    typealias SearchVideos = (String) -> AnyPublisher<[Video], SearchVideosError>
 
-    private let _searchWithQuery = PassthroughSubject<String, Never>()
+    private let _searchWithQuery = PassthroughSubject<String, SearchVideosError>()
     private var cancellables: [AnyCancellable] = []
 
     @Published private(set) var videos: [Video] = []
@@ -30,12 +30,13 @@ final class VideoListViewModel: ObservableObject {
 
         searchTrigger
             .map { _ in true }
+            .replaceError(with: false)
             .assign(to: \.isLoading, on: self)
             .store(in: &cancellables)
 
 
         let response = searchTrigger
-            .flatMapLatest { [unowned self] query -> AnyPublisher<[Video], Never> in
+            .flatMapLatest { [unowned self] query -> AnyPublisher<[Video], SearchVideosError> in
                 self.searchVideosService.search(matching: query)
                     .eraseToAnyPublisher()
             }
@@ -44,12 +45,22 @@ final class VideoListViewModel: ObservableObject {
 
         response
             .map { _ in false }
+            .replaceError(with: false)
             .assign(to: \.isLoading, on: self)
             .store(in: &cancellables)
 
         response
             .map { $0 }
-            .assign(to: \.videos, on: self)
+            .sink(receiveCompletion: { [weak self] error in
+                switch error {
+                case .failure(let error):
+                    self?.errorMessage = error.message
+                case .finished:
+                    self?.errorMessage = nil
+                }
+            }, receiveValue: { [weak self] videos in
+                self?.videos = videos
+            })
             .store(in: &cancellables)
     }
 
@@ -59,5 +70,9 @@ final class VideoListViewModel: ObservableObject {
 
     func save(video: Video) {
         videosManager.save(video: video)
+    }
+
+    func remove(video: Video) {
+        videosManager.remove(videos: [video])
     }
 }

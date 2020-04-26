@@ -11,6 +11,22 @@ import Combine
 import NetworkClient
 import Keys
 
+enum SearchVideosError: Error {
+    case limitExceeded(message: String)
+    case otherError
+}
+
+extension SearchVideosError {
+    var message: String {
+        switch self {
+        case .limitExceeded(let message):
+            return message
+        default:
+            return "unknown error"
+        }
+    }
+}
+
 struct SearchVideosService {
     private let networkClient = CombineNetworkingClient()
     private let decoder: JSONDecoder
@@ -29,7 +45,7 @@ extension SearchVideosService {
         return "https://www.googleapis.com/youtube/v3"
     }
 
-    func search(matching query: String) -> AnyPublisher<[Video], Never> {
+    func search(matching query: String) -> AnyPublisher<[Video], SearchVideosError> {
         guard let url = URL(string: "\(baseURL)/search") else {
             return .empty()
         }
@@ -43,13 +59,28 @@ extension SearchVideosService {
         )
             .decode(type: Video.YoutubeVideosContainer.self, decoder: decoder)
             .map{ $0.videos }
-            .catch{ error -> AnyPublisher<[Video], Never> in
-                return AnyPublisher<[Video], Never>.empty()
-            }
+            .mapError{ error -> SearchVideosError in
+                switch error {
+                case let networkError as NetworkError:
+                    switch networkError {
+                    case .otherError(let object):
+                        if let data = object as? Data,
+                            let errorDict = self.convertToDictionary(data: data),
+                            let errorMessage = errorDict["message"] as? String {
+                            return .limitExceeded(message: errorMessage)
+                        }
+                    default:
+                        break
+                    }
+                    fallthrough
+                default:
+                    return .otherError
+                }
+        }
         .eraseToAnyPublisher()
     }
 
-    func convertToDictionary(data: Data) -> [String: Any]? {
+    private func convertToDictionary(data: Data) -> [String: Any]? {
         do {
             return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
         } catch {
